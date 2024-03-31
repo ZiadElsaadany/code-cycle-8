@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
           color: Color(0xff006672),
 
         ),
-        child: Text("Quiz App",style:GoogleFonts.almarai(
+        child: Text("Quiz App",style:TextStyle(
           color:Colors.white,
           fontWeight: FontWeight.w700,
           fontSize: 18,

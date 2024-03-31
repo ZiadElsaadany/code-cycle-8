@@ -32,6 +32,6 @@ List<QuestionModel> questionAndAnswers = [
       correctAnswer:"Football" ,
 
       title: "What is your Favourite Sport?",
-answers:[AnswerModel(title:"Football"), AnswerModel(title: "Black"), AnswerModel(title: "Red") , AnswerModel(title: "Yellow")]
+answers:[AnswerModel(title:"Football"), AnswerModel(title: "Basketball"), AnswerModel(title: "volleyball")]
   ),
 ];
