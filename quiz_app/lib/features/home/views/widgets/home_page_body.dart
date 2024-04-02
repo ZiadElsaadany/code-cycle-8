@@ -106,6 +106,7 @@ if( index == questionAndAnswers.length-1 )  {
           ),
           const SizedBox(height: 14),
           const CustomHomeDivider(),
+
           const SizedBox(height: 17),
         /**
          * The ... operator is used to unpack the elements of the list questionAndAnswers[0]["answers"].
@@ -126,14 +127,9 @@ if( index == questionAndAnswers.length-1 )  {
                     groupValue:questionAndAnswers[index].selectAnswer ,
                     onChanged: ( value) {
 
-
-
-
                       questionAndAnswers[index].selectAnswer=value;
                       setState(() {
-
-
-                        // debugPrint(questionAndAnswers[index].selectAnswer .toString());
+                    // debugPrint(questionAndAnswers[index].selectAnswer .toString());
                       });
                     },
                   ),
