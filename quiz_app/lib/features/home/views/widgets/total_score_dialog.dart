@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/core/utils/app_colors.dart';
 import 'package:quiz_app/core/utils/app_texts.dart';
 import 'package:quiz_app/features/home/data/models/question_model.dart';
+import 'package:quiz_app/features/review_questions/views/review_screen.dart';
 
 class TotalScoreDialog extends StatelessWidget {
   const TotalScoreDialog({super.key, required this.totalScore, required this.yourScore, required this.retestOnTap});
@@ -62,22 +64,29 @@ class TotalScoreDialog extends StatelessWidget {
                     const SizedBox(height: 24,),
 
 
-                    Container(
-                      padding: const EdgeInsets.all(13),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (c)  {
+                          return  ReviewScreen();
+                        } ));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(13),
 
-                      alignment: Alignment.center,
+                        alignment: Alignment.center,
 
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: AppColors.primaryColor)
-                      ),
-                      child: const Text(AppTexts.reviewYourAnswers,
-                      style: TextStyle(
-                        fontSize:14 ,
-                        fontWeight: FontWeight.w700,
-                        color:AppColors.primaryColor
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: AppColors.primaryColor)
+                        ),
+                        child: const Text(AppTexts.reviewYourAnswers,
+                        style: TextStyle(
+                          fontSize:14 ,
+                          fontWeight: FontWeight.w700,
+                          color:AppColors.primaryColor
 
-                      ),
+                        ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16,),

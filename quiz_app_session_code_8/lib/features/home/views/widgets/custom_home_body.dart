@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_session_code_8/features/home/data/models/question_model.dart';
 import 'package:quiz_app_session_code_8/features/home/views/widgets/custom_home_divide.dart';
 import 'package:quiz_app_session_code_8/features/home/views/widgets/custom_result_dialog.dart';
 
@@ -13,34 +14,50 @@ class CustomHomeBody extends StatefulWidget {
 }
 
 class _CustomHomeBodyState extends State<CustomHomeBody> {
-  List<Map<String, dynamic>> questions = [
-    {
-      "title":  "q1",
-      "answers": ["a1", "a2" , "a3"],
-      "correctAnswer": "a1",
-      "selectedAnswer": null
 
-    } ,
-    {
-      "title":  "q10",
-      "answers": ["a4", "a5"],
-      "correctAnswer": "a5",
-      "selectedAnswer": null //"a4"
-    } ,
-    {
-      "title":  "q3",
-      "answers": ["a6", "a7" , "a8", "a9"],
-      "correctAnswer": "a8",
-      "selectedAnswer": null  //a7
-    } ,
-  ] ;
+  List<QuestionModel> questions = [
+
+    QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "MO Salah"], title: "Who is your favorite football player?", selectedAnswer: null)
+,
+    QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "MO Salah"], title: "Who is your favorite  color?", selectedAnswer: null)
+
+
+    // {
+    //   "title": "",
+    //   "answers": ,
+    //   "correctAnswer": ,
+    //   "selectedAnswer": ,
+    // },
+    // {
+    //   "title": "Who is your favorite basketball player?",
+    //   "answers": ["LeBron James", "Kevin Durant", "Stephen Curry", "Other"],
+    //   "correctAnswer": "LeBron James",
+    //   "selectedAnswer": null,
+    // },
+    // {
+    //   "title": "Who is your favorite tennis player?",
+    //   "answers": ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Other"],
+    //   "correctAnswer": "Roger Federer",
+    //   "selectedAnswer": null,
+    // },
+  ];
+
+
+
+
+
+  changeSelectedAnswerToNull( ) {
+    for(int i  = 0 ;  i< questions.length ; i++ ) {
+      questions[i].selectedAnswer  = null;
+    }
+  }
 
 
   int score = 0 ;
   checkScore( ) {
     for(int i   = 0 ;  i<questions.length ; i++ ) {
 
-       if(questions[i]["correctAnswer"]== questions[i]["selectedAnswer"] ) {
+       if(questions[i].correctAnswer== questions[i].selectedAnswer) {
          score += 10 ;
        }
 
@@ -57,7 +74,7 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
 
     if(questionIndex <questions.length-1 ) {
 
-      if(questions[questionIndex]["selectedAnswer"]!=null){
+      if(questions[questionIndex].selectedAnswer!=null){
         questionIndex++;  // 0    1     2
         setState(() {
 
@@ -75,6 +92,15 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
         return CustomResultDialog(
           score: score,
           length: questions.length,
+          click: ( ) {
+            questionIndex = 0;
+            score =  0;
+            changeSelectedAnswerToNull();
+            Navigator.pop(context);
+            setState(() {
+
+            });
+          },
         );
       } );
 
@@ -90,7 +116,7 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
 
         SizedBox(height: 45,),
 
-        Text(questions[questionIndex]["title"] ,
+        Text(questions[questionIndex].title ,
 
 
           style: const TextStyle(
@@ -117,7 +143,7 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
         //"answers": ["a1", "a2" , "a3"]
         // cascade operator
 
-        ...questions[questionIndex]["answers"].map(
+        ...questions[questionIndex].answers.map(
                 (answer){
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -125,14 +151,12 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
 
                   Text(answer),
 
-
-
                   Radio(
                     activeColor: AppColors.primaryColor,
                     value: answer,
-                    groupValue:questions[questionIndex]["selectedAnswer"] ,
+                    groupValue:questions[questionIndex].selectedAnswer ,
                     onChanged: ( x) {
-                      questions[questionIndex]["selectedAnswer"]= x;
+                      questions[questionIndex].selectedAnswer= x;
                       setState(() {
 
                       });

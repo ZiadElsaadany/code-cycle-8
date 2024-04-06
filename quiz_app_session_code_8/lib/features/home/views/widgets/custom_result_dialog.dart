@@ -3,10 +3,11 @@ import 'package:quiz_app_session_code_8/core/utils/app_colors.dart';
 import 'package:quiz_app_session_code_8/core/utils/app_texts.dart';
 
 class CustomResultDialog extends StatelessWidget {
-  const CustomResultDialog({ required this.score, required this.length});
+  const CustomResultDialog({super.key,  required this.score, required this.length, this.click});
 
   final int score;
   final int length;
+  final void Function()?  click ;
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -46,7 +47,23 @@ class CustomResultDialog extends StatelessWidget {
           ),
           SizedBox(
             height: 24
-          )
+          ),
+          Center(
+            child: GestureDetector(
+              onTap: click ,
+              child: Container(
+                alignment: Alignment.center ,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.primaryColor)
+                ),
+                child: Text(AppTexts.retest),
+              ),
+            ),
+          ) ,
+          SizedBox(
+              height: 24
+          ),
+
         ],
       ),
 

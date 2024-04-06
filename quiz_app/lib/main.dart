@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'features/home/views/home_page.dart';
+import 'features/splash/views/splash_screen.dart';
 
 void main ( )   {
   runApp(const QuizApp());
@@ -18,7 +19,7 @@ class QuizApp extends StatelessWidget {
         theme:ThemeData(
           fontFamily: GoogleFonts.almarai().fontFamily
         ),
-      home: const HomePage()
+      home: const SplashScreen()
     );
   }
 }
