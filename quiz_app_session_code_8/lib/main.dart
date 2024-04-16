@@ -15,6 +15,8 @@ void main( )   {
 
   // print(person1.height.toString());
 
+  int z = 0 ;
+
   runApp(QuizApp());
 }
 

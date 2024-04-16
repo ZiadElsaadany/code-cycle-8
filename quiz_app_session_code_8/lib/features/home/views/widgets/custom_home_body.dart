@@ -19,7 +19,8 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
 
     QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "MO Salah"], title: "Who is your favorite football player?", selectedAnswer: null)
 ,
-    QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "MO Salah"], title: "Who is your favorite  color?", selectedAnswer: null)
+    QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar"], title: "Who is your favorite  color?", selectedAnswer: null)
+  ,  QuestionModel(correctAnswer: "Lionel Messi", answers: ["Lionel Messi", "Cristiano Ronaldo", "Neymar"], title: "Who is your favorite  color?", selectedAnswer: null)
 
 
     // {
@@ -90,6 +91,7 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
       showDialog(context: context, builder: (cont )
       {
         return CustomResultDialog(
+          questions: questions,
           score: score,
           length: questions.length,
           click: ( ) {
@@ -107,8 +109,12 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
     }
   }
 
+
+
+ int  x  = 0  ;
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
 
@@ -116,18 +122,18 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
 
         SizedBox(height: 45,),
 
-        Text(questions[questionIndex].title ,
+    Text(questions[questionIndex].title ,
 
 
-          style: const TextStyle(
+    style: const TextStyle(
 
 
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 14
-          ),
-          textAlign: TextAlign.right,
-        ) ,
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.w700,
+    fontSize: 14
+    ),
+    textAlign: TextAlign.right,
+    ) ,
         SizedBox(height: 14,),
 
 
@@ -199,9 +205,6 @@ class _CustomHomeBodyState extends State<CustomHomeBody> {
           padding: const EdgeInsets.symmetric(
               horizontal: 20.0),
           child: Text(
-
-
-
             questionIndex== questions.length-1  ?  AppTexts.send:     AppTexts.next,
 
             style: TextStyle(

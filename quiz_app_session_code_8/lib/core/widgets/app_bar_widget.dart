@@ -4,8 +4,9 @@ import '../utils/app_colors.dart';
 import '../utils/app_texts.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.name});
 
+  final String name ;
   @override
   Widget build(BuildContext context) {
     return   Container(
@@ -17,7 +18,7 @@ class CustomAppBar extends StatelessWidget {
             bottomRight: Radius.circular(30),
         )
       ),
-      child: Text(AppTexts.appName,
+      child: Text(name,
         style: TextStyle(
             color: Colors.white,
             fontSize: 18

@@ -16,8 +16,11 @@ class HomeScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+
             toolbarHeight:100 ,
-          flexibleSpace:CustomAppBar() ,
+          flexibleSpace:CustomAppBar(
+            name: AppTexts.appName,
+          ) ,
         ),
         body: const CustomHomeBody()
       ),

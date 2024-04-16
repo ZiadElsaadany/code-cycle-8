@@ -6,6 +6,7 @@ class AppTexts   {
   static const String send = "Send";
   static const String result = "Result";
   static const String retest = "Retest";
+  static const String checkAnswers = "Check Answer";
 
 
 }
