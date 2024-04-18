@@ -4,6 +4,7 @@ import 'package:bill_app_code_cycle_8/features/home/views/widgets/banner_widget.
 import 'package:bill_app_code_cycle_8/features/home/views/widgets/food_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -12,25 +13,28 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(16.0),
-      child: ListView(
-        children: [
-         BannerWidget(),
-      const SizedBox(height: 10,),
-      Expanded(
-        child: GridView.builder(
+        child: CustomScrollView(
+        slivers: [
+       SliverToBoxAdapter(
+         child:   BannerWidget(),
+       ),
+     SliverToBoxAdapter(
+       child:  const SizedBox(height: 10,),
+     ),
+
+      SliverGrid.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10,
 
           ),
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
 
-      itemCount: 5,
-      itemBuilder: (c,index) {
-          return FoodItem();
-        }),
-      )
+
+          itemCount: 5,
+          itemBuilder: (c,index) {
+            return FoodItem();
+          }
+      ),
 
         ],
       ),
