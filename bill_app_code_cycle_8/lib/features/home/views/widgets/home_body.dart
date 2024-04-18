@@ -13,28 +13,28 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Padding(
       padding: const EdgeInsets.all(16.0),
-        child: CustomScrollView(
+      child: CustomScrollView(
         slivers: [
-       SliverToBoxAdapter(
-         child:   BannerWidget(),
-       ),
-     SliverToBoxAdapter(
-       child:  const SizedBox(height: 10,),
-     ),
-
-      SliverGrid.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-
+          SliverToBoxAdapter(
+            child:   BannerWidget(),
+          ),
+          SliverToBoxAdapter(
+            child:  const SizedBox(height: 10,),
           ),
 
+          SliverGrid.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
 
-          itemCount: 5,
-          itemBuilder: (c,index) {
-            return FoodItem();
-          }
-      ),
+              ),
+
+
+              itemCount: 5,
+              itemBuilder: (c,index) {
+                return FoodItem();
+              }
+          ),
 
         ],
       ),
