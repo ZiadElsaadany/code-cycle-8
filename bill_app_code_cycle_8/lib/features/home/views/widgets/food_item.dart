@@ -28,13 +28,20 @@ class FoodItem extends StatelessWidget {
               ),
               Text("Beaf Burger"),
               SizedBox(height: 14,),
-              Text("7.5 \$"),
+              Text("7.5 \$", 
+              style: TextStyle(
+                color: AppColors.favOrange,
+                fontWeight: FontWeight.bold
+              ),
+              ),
             ],
           ),
         ),
         CircleAvatar(
           backgroundColor: AppColors.favOrange.withOpacity(0.1),
-          child: Icon(Icons.favorite),
+          child: Icon(Icons.favorite_border,
+          color: AppColors.favOrange,
+          ),
         ),
 
       ],

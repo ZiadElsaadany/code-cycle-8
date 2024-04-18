@@ -17,13 +17,16 @@ class HomeBody extends StatelessWidget {
          BannerWidget(),
       const SizedBox(height: 10,),
       Expanded(
-        child: ListView.separated(
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+
+          ),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          separatorBuilder: (context,index)  {
-      return const SizedBox(height: 10,);
-          },
-      itemCount: 20,
+
+      itemCount: 5,
       itemBuilder: (c,index) {
           return FoodItem();
         }),
