@@ -1,4 +1,5 @@
 import 'package:bella_session_code_cycle_8_final/core/utils/app_images.dart';
+import 'package:bella_session_code_cycle_8_final/features/favourites/views/favorite_screen.dart';
 import 'package:bella_session_code_cycle_8_final/features/home/views/widgets/home_body.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Widget> screens  = [
     // current index  = 0
     HomeBody() ,
-    Center(child: Text("favorite"),),
+    FavoriteScreen(
+    )
 
   ] ;
   @override

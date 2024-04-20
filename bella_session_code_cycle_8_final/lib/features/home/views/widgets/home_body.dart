@@ -1,58 +1,35 @@
 import 'package:bella_session_code_cycle_8_final/core/utils/app_images.dart';
+import 'package:bella_session_code_cycle_8_final/features/home/data/models/food_model.dart';
+import 'package:bella_session_code_cycle_8_final/features/home/views/widgets/banner_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'food_home_widget.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(18),
-            child: Image.asset(AppImages.banner,
-              width: double.infinity,
-              height:size.height*0.22,
-              fit: BoxFit.cover,
-            ),
+      child: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(
+            child:         CustomBanner(),
+          )  ,
+          SliverGrid.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+
+             crossAxisCount: 2
+
           ),
+              itemCount: foods.length,
+              itemBuilder: (c,index) {
+            return   HomeFoodWidget(
+              index:index ,
+            );
+          })
 
-
-          Expanded(
-            child: ListView.builder(
- itemCount: 1,
-                itemBuilder: (c,index)  {
-              return Container(
-
-                decoration: BoxDecoration(
-                  color:AppColors.orange.withOpacity(0.1)
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: Container(
-
-
-                        height: 30,
-
-                        width: 30,
-
-                        child: Icon(Icons.favorite_border,
-                        color: AppColors.orange,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }),
-          )
         ],
       ),
     );
