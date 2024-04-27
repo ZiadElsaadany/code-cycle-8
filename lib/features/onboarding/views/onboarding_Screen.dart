@@ -1,4 +1,5 @@
 import 'package:flower_code_cycle_8/core/utils/app_fonts.dart';
+import 'package:flower_code_cycle_8/features/home/views/home_screen.dart';
 import 'package:flower_code_cycle_8/features/onboarding/data/models/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -69,6 +70,10 @@ class OnboardingScreen extends StatelessWidget {
 
 
                       if(index== onboardings.length-1){
+
+                        Navigator.pushReplacement(context,MaterialPageRoute(builder: (c) {
+                          return               HomeScreen()       ;
+                        }));
 
                       }else{
                         pageController.animateToPage(index+1, duration: Duration(
