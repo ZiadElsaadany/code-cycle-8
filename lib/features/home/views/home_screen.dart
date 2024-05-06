@@ -9,6 +9,7 @@ import 'package:flower_code_cycle_8/features/home/views/widgets/sweet_widget.dar
 import 'package:flutter/material.dart';
 
 import '../../best_selling/views/best_selling_screen.dart';
+import '../../product_details/views/product_details.dart';
 import '../../search/view/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,7 +19,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         centerTitle: true,
         title: Image.asset(AppImages.logoImage,
         width: 80,
@@ -27,13 +27,23 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed:  ( ) {} ,
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: const Icon(Icons.shopping_cart_outlined),
           )
         ],
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Cart"),
+            )
+          ],
+        ),
+      ),
       body:  Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter
@@ -90,12 +100,25 @@ class HomeScreen extends StatelessWidget {
             ),
             SliverGrid.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2 ,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 10,
+              childAspectRatio: 0.92
             ), itemBuilder: (c,index) {
-              return   SweetWidget(
-                index: index,
+              return   GestureDetector(
+                onTap:  ( ) {
 
+
+                  Navigator.push(context, MaterialPageRoute(builder: (C) {
+                    return ProductDetails(
+                      index: index,
+                    );
+                  } ));
+
+                },
+                child: SweetWidget(
+                  index: index,
+
+                ),
               );
             }  ,
             itemCount:2
