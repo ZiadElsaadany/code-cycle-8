@@ -1,9 +1,15 @@
 import 'package:flower_code_cycle_8/core/utils/app_images.dart';
+import 'package:flower_code_cycle_8/features/home/data/models/category_model.dart';
+import 'package:flower_code_cycle_8/features/home/data/models/sweet_model.dart';
 import 'package:flower_code_cycle_8/features/home/views/widgets/banner_widget.dart';
 import 'package:flower_code_cycle_8/features/home/views/widgets/category_widget.dart';
 import 'package:flower_code_cycle_8/features/home/views/widgets/search_home_widget.dart';
 import 'package:flower_code_cycle_8/features/home/views/widgets/see_more.dart';
+import 'package:flower_code_cycle_8/features/home/views/widgets/sweet_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../best_selling/views/best_selling_screen.dart';
+import '../../search/view/search_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,9 +41,16 @@ class HomeScreen extends StatelessWidget {
               child:  BannerWidget() ,
             ),
             SliverToBoxAdapter(
-              child: SearchHomeWidget(),
+              child: GestureDetector(
+                  onTap: ( )  {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) {
+                      return SearchScreen();
+                    }));
+                  },
+                  child: SearchHomeWidget()),
             ),   SliverToBoxAdapter(
               child: SeeMoreWidget(
+
                 title: "Discover by category",
               ),
             ),
@@ -47,15 +60,19 @@ class HomeScreen extends StatelessWidget {
                height: 95,
                child: ListView.separated(
                  separatorBuilder: (c,index) {
-                   return SizedBox();
+                   return SizedBox(
+                     width: 20,
+                   );
                  },
                  scrollDirection: Axis.horizontal,
 
                  itemBuilder: (c,index) {
 
-                   return            CategoryWidget() ;
+                   return            CategoryWidget(
+                     index: index,
+                   ) ;
                  } ,
-                 itemCount: 10,
+                 itemCount: categories.length,
 
                ),
              ) ,
@@ -63,15 +80,25 @@ class HomeScreen extends StatelessWidget {
 
             SliverToBoxAdapter(
               child: SeeMoreWidget(
+                onPressed: ( ){
+                  Navigator.push(context, MaterialPageRoute(builder: (c) {
+                    return BestSellingScreen();
+                  }));
+                },
                 title: "Best selling",
               ),
             ),
             SliverGrid.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2
+              crossAxisCount: 2 ,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10
             ), itemBuilder: (c,index) {
-              return   SweetWidget();
+              return   SweetWidget(
+                index: index,
+
+              );
             }  ,
-            itemCount: 10,
+            itemCount:2
             )
 
 
